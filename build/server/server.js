@@ -8,4 +8,8 @@ const express = require("express");
 const routers_1 = __importDefault(require("../routers/routers"));
 const server = express();
 exports.server = server;
+const path = require("path");
+server.use(express.static(path.join(__dirname, "../../client/build")));
 server.use("/", routers_1.default);
+server.use("/cadastrar", routers_1.default);
+server.use("/login", routers_1.default);

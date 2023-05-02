@@ -9,30 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
-const path = require("path");
-const router = express.Router();
-router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+const sequelize_1 = require("sequelize");
+const Connection = new sequelize_1.Sequelize("library", "postgres", "xtm440", {
+    dialect: "postgres",
+    host: "localhost",
+    port: 5432,
 });
-router.get("/cadastrar", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-router.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-router.post("/cadastrar/usuario", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { nome, email, senha } = req.body;
+(() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(nome);
-        console.log(email);
-        console.log(senha);
+        Connection.sync().then(() => {
+            console.log("Connected to the database");
+        });
     }
     catch (error) {
         console.log(`There was an error ${error}`);
     }
-    finally {
-        res.redirect("/");
-    }
-}));
-exports.default = router;
+}))();
+exports.default = Connection;
