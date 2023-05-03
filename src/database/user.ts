@@ -1,7 +1,7 @@
 const sequelize = require("sequelize");
-import connection from "./connection";
+import Connection from "./connection";
 
-const users = connection.define("users", {
+const users = Connection.define("users", {
   nome: {
     type: sequelize.TEXT,
     allowNull: false,

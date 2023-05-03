@@ -9,30 +9,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const users = require("../database/user");
 const express = require("express");
 const path = require("path");
 const router = express.Router();
 router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    res.sendFile(path.join(__dirname, "../../client/build/index.html"));
 });
 router.get("/cadastrar", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    res.sendFile(path.join(__dirname, "../../client/build/index.html"));
 });
 router.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    res.sendFile(path.join(__dirname, "../../client/build/index.html"));
 });
 router.post("/cadastrar/usuario", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { nome, email, senha } = req.body;
+    let { nome, email, senha } = req.body;
     try {
-        console.log(nome);
-        console.log(email);
-        console.log(senha);
+        users.create({
+            nome,
+            email,
+            senha,
+        });
     }
     catch (error) {
-        console.log(`There was an error ${error}`);
+        res.send(`There was an error => ${error}`);
     }
     finally {
-        res.redirect("/");
+        res.redirect("/login");
     }
 }));
 exports.default = router;

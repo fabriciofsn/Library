@@ -1,7 +1,7 @@
 const express = require("express");
 import router from "../routers/routers";
-
 const server = express();
+
 const path = require("path");
 
 server.use(express.static(path.join(__dirname, "../../client/build")));

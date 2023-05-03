@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "./components/Header";
 import Cadastrar from "./components/Cadastrar";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
