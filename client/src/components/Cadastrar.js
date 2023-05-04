@@ -34,7 +34,7 @@ const cadastrar = () => {
             );
           })}
           <DivElementFlex>
-            <button>Enviar</button>
+            <button>Cadastrar-se</button>
             <DivElementFlex>
               <p>Já tem conta?</p>
               <a href="/login">Fazer Login</a>
