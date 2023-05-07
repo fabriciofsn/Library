@@ -13,6 +13,9 @@ export const DivElement = styled.div`
     width: 100%;
     max-width: 500px;
     margin: auto;
+    border: 1px solid #e54;
+    padding: 1rem;
+    border-radius: 5px;
   }
 
   form label {
@@ -20,6 +23,7 @@ export const DivElement = styled.div`
     font-size: 1.5rem;
     margin-top: 10px;
     text-transform: capitalize;
+    color: #e54;
   }
 
   input {
@@ -38,17 +42,17 @@ export const DivElement = styled.div`
   }
 
   button {
-    background-color: #0d6efd;
+    background-color: #e54;
     color: white;
     font-size: 1.2rem;
     border: none;
-    margin: 5px 0;
+    margin: 15px 0;
     padding: 0.5rem;
     border-radius: 4px;
     cursor: pointer;
   }
 
   .input {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #ccc;
   }
 `;

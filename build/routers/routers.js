@@ -37,10 +37,12 @@ router.post("/cadastrar/usuario", (req, res) => __awaiter(void 0, void 0, void 0
                 email,
                 senha: hashPassword,
             });
-            res.redirect("/login");
         }
         catch (error) {
             res.json(`There was an error -> ${error}`);
+        }
+        finally {
+            res.redirect("/login");
         }
     }
     else {

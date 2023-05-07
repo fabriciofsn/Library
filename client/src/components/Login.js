@@ -7,9 +7,13 @@ const Login = () => {
     <DivElement>
       <form action="">
         <label htmlFor="email">Email</label>
-        <input type="email" />
-        <label htmlFor="senha">Senha</label>
-        <input type="password" />
+        <div className="input">
+          <input id="email" name="email" type="email" />
+        </div>
+        <label htmlFor="password">Senha</label>
+        <div className="input">
+          <input id="password" name="senha" type="password" />
+        </div>
         <DivElementFlex>
           <button>Entrar</button>
           <DivElementFlex>

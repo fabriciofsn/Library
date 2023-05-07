@@ -32,9 +32,10 @@ router.post("/cadastrar/usuario", async (req: Request, res: Response) => {
         email,
         senha: hashPassword,
       });
-      res.redirect("/login");
     } catch (error) {
       res.json(`There was an error -> ${error}`);
+    } finally {
+      res.redirect("/login");
     }
   } else {
     res.json("Email já cadastrado");
