@@ -1,7 +1,7 @@
 const sequelize = require("sequelize");
 import Connection from "./connection";
 
-const users = Connection.define("users", {
+const Users = Connection.define("users", {
   nome: {
     type: sequelize.TEXT,
     allowNull: false,
@@ -16,4 +16,4 @@ const users = Connection.define("users", {
   },
 });
 
-export default users;
+export default Users;

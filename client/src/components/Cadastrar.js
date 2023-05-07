@@ -29,7 +29,9 @@ const cadastrar = () => {
             return (
               <div key={id}>
                 <label htmlFor={id}>{label}</label>
-                <input name={id} id={id} type={type} required />
+                <div className="input">
+                  <input name={id} id={id} type={type} required />
+                </div>
               </div>
             );
           })}

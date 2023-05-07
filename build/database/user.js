@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize = require("sequelize");
 const connection_1 = __importDefault(require("./connection"));
-const users = connection_1.default.define("users", {
+const Users = connection_1.default.define("users", {
     nome: {
         type: sequelize.TEXT,
         allowNull: false,
@@ -19,4 +19,4 @@ const users = connection_1.default.define("users", {
         allowNull: false,
     },
 });
-exports.default = users;
+exports.default = Users;

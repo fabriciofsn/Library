@@ -4,9 +4,10 @@ export const DivElement = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: calc(100vh - 71px);
   width: 100%;
   margin: auto;
+  background-color: #202124;
 
   form {
     width: 100%;
@@ -17,6 +18,7 @@ export const DivElement = styled.div`
   form label {
     display: block;
     font-size: 1.5rem;
+    margin-top: 10px;
     text-transform: capitalize;
   }
 
@@ -25,7 +27,14 @@ export const DivElement = styled.div`
     height: 40px;
     font-size: 1.2rem;
     padding: 0.3rem;
+    margin-bottom: 1px;
     outline: none;
+    border: none;
+    background-color: transparent !important;
+  }
+
+  input:-webkit-autofill {
+    background-color: transparent !important;
   }
 
   button {
@@ -37,5 +46,9 @@ export const DivElement = styled.div`
     padding: 0.5rem;
     border-radius: 4px;
     cursor: pointer;
+  }
+
+  .input {
+    border-bottom: 1px solid white;
   }
 `;

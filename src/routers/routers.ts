@@ -1,9 +1,9 @@
 import { Request, Response, Router } from "express";
 
-const users = require("../database/user");
+import Users from "../database/user";
 const express = require("express");
 const path = require("path");
-const bcrypt = require("bcrypt");
+import { hash } from "bcrypt";
 
 const router: Router = express.Router();
 
@@ -21,18 +21,23 @@ router.get("/login", (req: Request, res: Response) => {
 
 router.post("/cadastrar/usuario", async (req: Request, res: Response) => {
   let { nome, email, senha } = req.body;
-  // const hash = await bcrypt.hash(senha, 10);
+  const hashPassword = await hash(senha, 8);
 
-  try {
-    users.create({
-      nome,
-      email,
-      senha,
-    });
-  } catch (error) {
-    res.send(`There was an error -> ${error}`);
-  } finally {
-    res.redirect("/login");
+  const verificaEmail = await Users.findOne({ where: { email } });
+
+  if (!verificaEmail) {
+    try {
+      await Users.create({
+        nome,
+        email,
+        senha: hashPassword,
+      });
+      res.redirect("/login");
+    } catch (error) {
+      res.json(`There was an error -> ${error}`);
+    }
+  } else {
+    res.json("Email já cadastrado");
   }
 });
 
