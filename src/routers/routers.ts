@@ -4,6 +4,7 @@ import Users from "../database/user";
 const express = require("express");
 const path = require("path");
 import { hash } from "bcrypt";
+import bcrypt from "bcrypt";
 import { Sequelize } from "sequelize";
 
 const router: Router = express.Router();
@@ -45,13 +46,16 @@ router.post("/cadastrar/usuario", async (req: Request, res: Response) => {
 
 router.post("/login/usuario", async (req: Request, res: Response) => {
   let { email, senha } = req.body;
-  const hashPassword: string = await hash(senha, 8);
 
-  const dados: Array<{}> = await Users.findAll();
+  const userLogin: any = await Users.findOne({ where: { email } });
 
-  dados.forEach((data: {}) => {
-    console.log(data);
-  });
+  const userPass = await bcrypt.compare(senha, userLogin.senha);
+
+  if (userLogin.email == email && userPass) {
+    res.json({ mensagem: "Usuário logado!" });
+  } else {
+    res.json({ mensagem: "Dados incorretos" });
+  }
 });
 
 export default router;

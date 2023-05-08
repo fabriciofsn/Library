@@ -16,6 +16,7 @@ const user_1 = __importDefault(require("../database/user"));
 const express = require("express");
 const path = require("path");
 const bcrypt_1 = require("bcrypt");
+const bcrypt_2 = __importDefault(require("bcrypt"));
 const router = express.Router();
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../../client/build/index.html"));
@@ -51,10 +52,13 @@ router.post("/cadastrar/usuario", (req, res) => __awaiter(void 0, void 0, void 0
 }));
 router.post("/login/usuario", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let { email, senha } = req.body;
-    const hashPassword = yield (0, bcrypt_1.hash)(senha, 8);
-    const dados = yield user_1.default.findAll();
-    dados.forEach((data) => {
-        console.log(data);
-    });
+    const userLogin = yield user_1.default.findOne({ where: { email } });
+    const userPass = yield bcrypt_2.default.compare(senha, userLogin.senha);
+    if (userLogin.email == email && userPass) {
+        res.json({ mensagem: "Usuário logado!" });
+    }
+    else {
+        res.json({ mensagem: "Dados incorretos" });
+    }
 }));
 exports.default = router;
