@@ -1,7 +1,7 @@
 # Library
 Este é um repositório que contém um sistema de gerenciamento de biblioteca.
 
-Funcionalidades
+# Funcionalidades <br>
 O sistema permite que o usuário faça o cadastro de livros, autores e usuários, além de permitir o empréstimo e devolução de livros. Também é possível realizar consultas sobre os livros cadastrados na biblioteca.
 
 # Como executar o sistema
