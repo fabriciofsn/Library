@@ -5,7 +5,7 @@ import { DivElementFlex } from "../styles/login";
 const Login = () => {
   return (
     <DivElement>
-      <form action="">
+      <form action="login/usuario" method="POST">
         <label htmlFor="email">Email</label>
         <div className="input">
           <input id="email" name="email" type="email" />

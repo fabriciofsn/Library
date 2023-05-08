@@ -18,3 +18,4 @@ server.use("/", routers_1.default);
 server.use("/cadastrar", routers_1.default);
 server.use("/cadastrar/usuario", routers_1.default);
 server.use("/login", routers_1.default);
+server.use("/login/usuario", routers_1.default);

@@ -14,5 +14,6 @@ server.use("/", router);
 server.use("/cadastrar", router);
 server.use("/cadastrar/usuario", router);
 server.use("/login", router);
+server.use("/login/usuario", router);
 
 export { server };

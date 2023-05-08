@@ -42,4 +42,17 @@ router.post("/cadastrar/usuario", async (req: Request, res: Response) => {
   }
 });
 
+router.post("/login/usuario", async (req: Request, res: Response) => {
+  let { nome, email, senha } = req.body;
+  const hashPassword = await hash(senha, 8);
+
+  try {
+    await Users.findOne({ where: { email, senha: hashPassword } });
+  } catch (error) {
+    res.json(`There was an erro -> ${error}`);
+  } finally {
+    res.redirect("/");
+  }
+});
+
 export default router;

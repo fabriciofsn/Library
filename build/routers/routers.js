@@ -49,4 +49,17 @@ router.post("/cadastrar/usuario", (req, res) => __awaiter(void 0, void 0, void 0
         res.json("Email já cadastrado");
     }
 }));
+router.post("/login/usuario", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let { nome, email, senha } = req.body;
+    const hashPassword = yield (0, bcrypt_1.hash)(senha, 8);
+    try {
+        yield user_1.default.findOne({ where: { email, senha: hashPassword } });
+    }
+    catch (error) {
+        res.json(`There was an erro -> ${error}`);
+    }
+    finally {
+        res.redirect("/");
+    }
+}));
 exports.default = router;
