@@ -4,6 +4,7 @@ import Users from "../database/user";
 const express = require("express");
 const path = require("path");
 import { hash } from "bcrypt";
+import { Sequelize } from "sequelize";
 
 const router: Router = express.Router();
 
@@ -43,16 +44,14 @@ router.post("/cadastrar/usuario", async (req: Request, res: Response) => {
 });
 
 router.post("/login/usuario", async (req: Request, res: Response) => {
-  let { nome, email, senha } = req.body;
-  const hashPassword = await hash(senha, 8);
+  let { email, senha } = req.body;
+  const hashPassword: string = await hash(senha, 8);
 
-  try {
-    await Users.findOne({ where: { email, senha: hashPassword } });
-  } catch (error) {
-    res.json(`There was an erro -> ${error}`);
-  } finally {
-    res.redirect("/");
-  }
+  const dados: Array<{}> = await Users.findAll();
+
+  dados.forEach((data: {}) => {
+    console.log(data);
+  });
 });
 
 export default router;
