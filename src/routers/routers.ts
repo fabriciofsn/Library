@@ -5,7 +5,6 @@ const express = require("express");
 const path = require("path");
 import { hash } from "bcrypt";
 import bcrypt from "bcrypt";
-import { Sequelize } from "sequelize";
 
 const router: Router = express.Router();
 
